@@ -1,0 +1,95 @@
+Хорошие реализации:
+
+// is_even
+0 LOAD_FAST                0 (val)
+2 LOAD_CONST               1 (2)
+4 BINARY_MODULO
+6 LOAD_CONST               2 (0)
+8 COMPARE_OP               2 (==)
+10 RETURN_VALUE
+
+// is_even_v2
+0 LOAD_FAST                0 (val)
+2 LOAD_CONST               1 (2)
+4 BINARY_MODULO
+6 UNARY_NOT
+8 RETURN_VALUE
+
+
+// is_odd
+0 LOAD_GLOBAL              0 (bool)
+2 LOAD_FAST                0 (val)
+4 LOAD_CONST               1 (2)
+6 BINARY_MODULO
+8 CALL_FUNCTION            1
+10 RETURN_VALUE
+
+// is_odd_v2
+0 LOAD_FAST                0 (val)
+2 LOAD_CONST               1 (2)
+4 BINARY_MODULO
+6 RETURN_VALUE
+
+
+#############################################
+// is_even_v3 - эквивалентна is_even
+0 LOAD_FAST                0 (val)
+2 LOAD_CONST               1 (2)
+4 BINARY_MODULO
+6 LOAD_CONST               2 (1)
+8 COMPARE_OP               3 (!=)
+10 RETURN_VALUE
+
+
+#############################################
+Плохие реализации:
+
+// is_even_v4
+0 LOAD_CONST               1 (True)
+2 LOAD_CONST               2 (False)
+4 BUILD_LIST               2
+6 LOAD_FAST                0 (val)
+8 LOAD_CONST               3 (2)
+10 BINARY_MODULO
+12 BINARY_SUBSCR
+14 RETURN_VALUE
+
+
+// is_even_v5
+0 LOAD_CONST               1 (True)
+
+2 LOAD_CONST               2 (False)
+
+4 LOAD_CONST               3 ((0, 1))
+6 BUILD_CONST_KEY_MAP      2
+8 STORE_FAST               1 (parity)
+
+10 LOAD_FAST                1 (parity)
+12 LOAD_FAST                0 (val)
+14 LOAD_CONST               4 (2)
+16 BINARY_MODULO
+18 BINARY_SUBSCR
+20 RETURN_VALUE
+
+
+// is_even_6
+0 LOAD_FAST                0 (val)
+2 LOAD_CONST               1 (2)
+4 BINARY_MODULO
+6 LOAD_GLOBAL              0 (range)
+8 LOAD_CONST               2 (0)
+10 LOAD_CONST               3 (10)
+12 LOAD_CONST               1 (2)
+14 CALL_FUNCTION            3
+16 CONTAINS_OP              0
+18 RETURN_VALUE
+             
+             
+             
+             
+             
+             
+             
+             
+             
+
